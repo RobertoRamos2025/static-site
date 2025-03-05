@@ -1,0 +1,26 @@
+name: Desplegar en VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  desplegar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Conectar a VPS y desplegar
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }} # o la ip de tu vps
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            cd /var/www/scripts/
+            sudo deployedEcosafeStatic.sh
+            
+           
