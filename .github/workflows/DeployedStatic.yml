@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }} # o la ip de tu vps
           username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          key: ${{ secrets.VPS_KEY }}
           script: |
             cd /var/www/scripts/
             sudo deployedEcosafeStatic.sh
